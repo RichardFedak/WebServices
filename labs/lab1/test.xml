@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<furniture xmlns:f="https://www.w3schools.com/furniture">
+    <f:wardrobe type="wooden">
+        <f:shelf>S1
+        </f:shelf>
+        <f:shelf>S2
+        </f:shelf>
+    </f:wardrobe>
+</furniture>
