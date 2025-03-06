@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+    xmlns:tns="http://hw2/" targetNamespace="http://hw2/">
+    <types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://hw2/" >
+            <xs:element name="verify">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="arg0" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="verifyResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="VerifyResult" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </types>
+    <message name="VerifyRequest">
+        <part name="input" element="tns:verify"/>
+    </message>
+    <message name="VerifyResponse">
+        <part name="output" element="tns:verifyResponse"/>
+    </message>
+    <portType name="VerifyPortType">
+        <operation name="VerifyOperation">
+            <input message="tns:VerifyRequest"/>
+            <output message="tns:VerifyResponse"/>
+        </operation>
+    </portType>
+    <binding name="VerifyBinding" type="tns:VerifyPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="VerifyOperation">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>    
+    </binding>
+    <service name="VerifyService">
+        <port binding="tns:VerifyBinding" name="VerifyPort">
+            <soap:address location="http://127.0.0.1:8000/VerificationService"/>
+        </port>
+    </service>
+
+</definitions>
