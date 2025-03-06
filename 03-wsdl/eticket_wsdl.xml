@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+    xmlns:tns="http://hw2/" targetNamespace="http://hw2/">
+    <types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://hw2/" >
+            <xs:element name="generateETicket">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="arg0" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="generateETicketResponse">
+                <xs:complexType>
+                    <xs:all>
+                        <xs:element name="ticketId" type="xs:int"/>
+                        <xs:element name="ticketDate" type="xs:date"/>
+                        <xs:element name="athleteId" type="xs:int"/>
+                    </xs:all>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="checkETicketValidity">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="arg0" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="checkETicketValidityResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="CheckETicketValidityResult" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </types>
+    <message name="ETicketRequest">
+        <part name="input" element="tns:generateETicket"/>
+    </message>
+    <message name="ETicketResponse">
+        <part name="output" element="tns:generateETicketResponse"/>
+    </message>
+    <message name="CheckETicketValidityRequest">
+        <part name="input" element="tns:checkETicketValidity"/>
+    </message>
+    <message name="CheckETicketValidityResponse">
+        <part name="output" element="tns:checkETicketValidityResponse"/>
+    </message>
+    <portType name="ETicketPortType">
+        <operation name="ETicketOperation">
+            <input message="tns:ETicketRequest"/>
+            <output message="tns:ETicketResponse"/>
+        </operation>
+        <operation name="CheckETicketValidityOperation">
+            <input message="tns:CheckETicketValidityRequest"/>
+            <output message="tns:CheckETicketValidityResponse"/>
+        </operation>
+    </portType>
+    <binding name="ETicketBinding" type="tns:ETicketPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="ETicketOperation">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation> 
+        <operation name="CheckETicketValidityOperation">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>   
+    </binding>
+    <service name="ETicketService">
+        <port binding="tns:ETicketBinding" name="ETicketPort">
+            <soap:address location="http://127.0.0.1:8000/ETicketService"/>
+        </port>
+    </service>
+</definitions>

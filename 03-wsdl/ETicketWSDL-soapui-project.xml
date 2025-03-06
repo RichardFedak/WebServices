@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="0e1d5341-e990-43a6-a923-c96b30b526d7" activeEnvironment="Default" name="ETicketWSDL" resourceRoot="" soapui-version="5.8.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="2f09f94b-7ec9-4514-a9dd-64a942b27b9c" wsaVersion="NONE" name="ETicketBinding" type="wsdl" bindingName="{http://hw2/}ETicketBinding" soapVersion="1_1" anonymous="optional" definition="file:/C:/Users/richa/Desktop/SCHOOL/mgr/2.ročník/LS/WebServices/03-wsdl/eticket_wsdl.xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Users\richa\Desktop\SCHOOL\mgr\2.ročník\LS\WebServices\03-wsdl\eticket_wsdl.xml"><con:part><con:url>file:\C:\Users\richa\Desktop\SCHOOL\mgr\2.ročník\LS\WebServices\03-wsdl\eticket_wsdl.xml</con:url><con:content><![CDATA[<definitions targetNamespace="http://hw2/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://hw2/">
+  <types>
+    <xs:schema targetNamespace="http://hw2/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="generateETicket">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="arg0" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="generateETicketResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="ticketId" type="xs:int"/>
+            <xs:element name="ticketDate" type="xs:date"/>
+            <xs:element name="athleteId" type="xs:int"/>
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </types>
+  <message name="ETicketRequest">
+    <part name="input" element="tns:generateETicket"/>
+  </message>
+  <message name="ETicketResponse">
+    <part name="output" element="tns:generateETicketResponse"/>
+  </message>
+  <portType name="ETicketPortType">
+    <operation name="ETicketOperation">
+      <input message="tns:ETicketRequest"/>
+      <output message="tns:ETicketResponse"/>
+    </operation>
+  </portType>
+  <binding name="ETicketBinding" type="tns:ETicketPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="ETicketOperation">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="ETicketService">
+    <port binding="tns:ETicketBinding" name="ETicketPort">
+      <soap:address location="http://127.0.0.1:8000/ETicketService"/>
+    </port>
+  </service>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://127.0.0.1:8000/ETicketService</con:endpoint></con:endpoints><con:operation id="6eac73a9-ad4b-4367-a3e6-9ec0fbddbd92" isOneWay="false" action="" name="ETicketOperation" bindingOperationName="ETicketOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1ef98eb9-2088-47b8-8bea-ac1890b323ec" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://127.0.0.1:8000/ETicketService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hw2="http://hw2/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <hw2:generateETicket>\r
+         <arg0>22</arg0>\r
+      </hw2:generateETicket>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://hw2/ETicketPortType/ETicketOperationRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

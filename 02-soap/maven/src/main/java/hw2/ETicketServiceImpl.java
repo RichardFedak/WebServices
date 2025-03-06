@@ -8,9 +8,15 @@ public class ETicketServiceImpl implements ETicketService {
 
     @Override
     public ETicket generateETicket(int athleteId) {
-        int ticketId = (int) (Math.random() * 10000);
+    	int base = (int) (Math.random() * 909) + 1;
+        int ticketId = base * 11; 
         Date ticketDate = new Date();
 
         return new ETicket(ticketId, ticketDate, athleteId);
+    }
+    
+    @Override
+    public boolean checkETicketValidity(int eTicketId) {
+        return eTicketId % 11 == 0;
     }
 }
