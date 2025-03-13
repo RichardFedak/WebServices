@@ -1,7 +1,7 @@
 package hw2;
 
 import java.util.Date;
-import jakarta.jws.WebService;
+import javax.jws.WebService;
 
 @WebService(endpointInterface = "hw2.ETicketService")
 public class ETicketServiceImpl implements ETicketService {

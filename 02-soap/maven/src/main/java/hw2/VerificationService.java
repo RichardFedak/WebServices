@@ -1,13 +1,13 @@
 package hw2;
 import java.util.List;
 
-@jakarta.jws.WebService
+@javax.jws.WebService
 public interface VerificationService {
     
-    @jakarta.jws.WebMethod
+	@javax.jws.WebMethod
     public boolean verify(int athleteId);
     
-    @jakarta.jws.WebMethod
+	@javax.jws.WebMethod
     public List<Integer> getAllVerifiedAthletes();
 
 }

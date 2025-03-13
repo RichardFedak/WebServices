@@ -1,5 +1,5 @@
 package hw2;
-import jakarta.jws.WebService;
+import javax.jws.WebService;
 
 import java.util.ArrayList;
 import java.util.List;

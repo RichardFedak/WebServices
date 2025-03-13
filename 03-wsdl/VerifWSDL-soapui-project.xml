@@ -77,13 +77,13 @@
 </definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://127.0.0.1:8000/VerificationService</con:endpoint></con:endpoints><con:operation id="141e4c8d-0097-4d26-baa6-72214dfb8747" isOneWay="false" action="" name="GetAllVerifiedAthletesOperation" bindingOperationName="GetAllVerifiedAthletesOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="29bda994-e941-404c-89f6-5e122e9b5737" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://127.0.0.1:8000/VerificationService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hw2="http://hw2/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
-      <hw2:getAllVerifiedAthletes>?</hw2:getAllVerifiedAthletes>\r
+      <hw2:getAllVerifiedAthletes></hw2:getAllVerifiedAthletes>\r
    </soapenv:Body>\r
 </soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://hw2/VerifyPortType/GetAllVerifiedAthletesOperationRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="15db4b70-4be6-49d7-988a-fc57c232e1ff" isOneWay="false" action="" name="VerifyOperation" bindingOperationName="VerifyOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d2c2025d-d263-4679-b67c-3ba4eff24c01" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://127.0.0.1:8000/VerificationService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hw2="http://hw2/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <hw2:verify>\r
-         <arg0>4</arg0>\r
+         <arg0>3</arg0>\r
       </hw2:verify>\r
    </soapenv:Body>\r
 </soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://hw2/VerifyPortType/VerifyOperationRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

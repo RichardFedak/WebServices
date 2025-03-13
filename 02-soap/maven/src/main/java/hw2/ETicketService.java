@@ -1,11 +1,11 @@
 package hw2;
 
-@jakarta.jws.WebService
+@javax.jws.WebService
 public interface ETicketService {
     
-    @jakarta.jws.WebMethod
+	@javax.jws.WebMethod
     public ETicket generateETicket(int athleteId);
     
-    @jakarta.jws.WebMethod
+	@javax.jws.WebMethod
     public boolean checkETicketValidity(int eTicketId);
 }
