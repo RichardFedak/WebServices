@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="ETicketServiceImpl" targetNamespace="http://homework5service/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://homework5service/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://homework5service/" schemaLocation="eticketserviceimpl_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="checkETicketValidity">
+    <wsdl:part name="parameters" element="tns:checkETicketValidity">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="generateETicketResponse">
+    <wsdl:part name="parameters" element="tns:generateETicketResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="generateETicket">
+    <wsdl:part name="parameters" element="tns:generateETicket">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkETicketValidityResponse">
+    <wsdl:part name="parameters" element="tns:checkETicketValidityResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ETicketServiceImplPortType">
+    <wsdl:operation name="checkETicketValidity">
+      <wsdl:input name="checkETicketValidity" message="tns:checkETicketValidity">
+    </wsdl:input>
+      <wsdl:output name="checkETicketValidityResponse" message="tns:checkETicketValidityResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generateETicket">
+      <wsdl:input name="generateETicket" message="tns:generateETicket">
+    </wsdl:input>
+      <wsdl:output name="generateETicketResponse" message="tns:generateETicketResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ETicketServiceImplSoapBinding" type="tns:ETicketServiceImplPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="checkETicketValidity">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="checkETicketValidity">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="checkETicketValidityResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generateETicket">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="generateETicket">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="generateETicketResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ETicketServiceImpl">
+    <wsdl:port name="ETicketServiceImplPort" binding="tns:ETicketServiceImplSoapBinding">
+      <soap:address location="http://localhost:8080/homework5/services/ETicketServiceImplPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

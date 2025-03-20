@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="677f870f-a219-44bf-b4c4-7e7b9a9a5ed8" activeEnvironment="Default" name="Homework5" resourceRoot="" soapui-version="5.8.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="08986d0b-7a9a-452b-bb3d-24e9da9bdc02" wsaVersion="NONE" name="ETicketServiceImplSoapBinding" type="wsdl" bindingName="{http://homework5service/}ETicketServiceImplSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/homework5/wsdl/eticketserviceimpl.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/homework5/wsdl/eticketserviceimpl.wsdl"><con:part><con:url>http://localhost:8080/homework5/wsdl/eticketserviceimpl.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="ETicketServiceImpl" targetNamespace="http://homework5service/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://homework5service/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://homework5service/" schemaLocation="eticketserviceimpl_schema1.xsd"/>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="checkETicketValidity">
+    <wsdl:part name="parameters" element="tns:checkETicketValidity"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="generateETicketResponse">
+    <wsdl:part name="parameters" element="tns:generateETicketResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="generateETicket">
+    <wsdl:part name="parameters" element="tns:generateETicket"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkETicketValidityResponse">
+    <wsdl:part name="parameters" element="tns:checkETicketValidityResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ETicketServiceImplPortType">
+    <wsdl:operation name="checkETicketValidity">
+      <wsdl:input name="checkETicketValidity" message="tns:checkETicketValidity"></wsdl:input>
+      <wsdl:output name="checkETicketValidityResponse" message="tns:checkETicketValidityResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generateETicket">
+      <wsdl:input name="generateETicket" message="tns:generateETicket"></wsdl:input>
+      <wsdl:output name="generateETicketResponse" message="tns:generateETicketResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ETicketServiceImplSoapBinding" type="tns:ETicketServiceImplPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="checkETicketValidity">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="checkETicketValidity">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="checkETicketValidityResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generateETicket">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="generateETicket">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="generateETicketResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ETicketServiceImpl">
+    <wsdl:port name="ETicketServiceImplPort" binding="tns:ETicketServiceImplSoapBinding">
+      <soap:address location="http://localhost:8080/homework5/services/ETicketServiceImplPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:8080/homework5/wsdl/eticketserviceimpl_schema1.xsd</con:url><con:content><![CDATA[<xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://homework5service/" version="1.0" xmlns="http://homework5service/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="eTicket">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="date" type="xs:dateTime"/>
+      <xs:element name="athleteId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="checkETicketValidity" type="checkETicketValidity"/>
+  <xs:complexType name="checkETicketValidity">
+    <xs:sequence>
+      <xs:element form="qualified" name="eTicketId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="checkETicketValidityResponse" type="checkETicketValidityResponse"/>
+  <xs:complexType name="checkETicketValidityResponse">
+    <xs:sequence>
+      <xs:element form="qualified" name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="generateETicket" type="generateETicket"/>
+  <xs:complexType name="generateETicket">
+    <xs:sequence>
+      <xs:element form="qualified" name="athleteId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="generateETicketResponse" type="generateETicketResponse"/>
+  <xs:complexType name="generateETicketResponse">
+    <xs:sequence>
+      <xs:element form="qualified" minOccurs="0" name="return" type="eTicket"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/homework5/services/ETicketServiceImplPort</con:endpoint></con:endpoints><con:operation id="9987c60d-8a1c-431e-b8ad-92b03b94dbc7" isOneWay="false" action="" name="generateETicket" bindingOperationName="generateETicket" type="Request-Response" outputName="generateETicketResponse" inputName="generateETicket" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f7e92cf1-a4dc-4f96-86ec-71fe7e248956" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/homework5/services/ETicketServiceImplPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+   <soapenv:Header>
+    <wsse:Security>
+      <wsse:UsernameToken>
+        <wsse:Username>Athlete1</wsse:Username>
+        <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">aaa111</wsse:Password>
+      </wsse:UsernameToken>
+     </wsse:Security>
+  </soapenv:Header>
+   <soapenv:Body>
+      <hom:generateETicket xmlns:hom="http://homework5service/">
+         <athleteId>1</athleteId>
+      </hom:generateETicket>
+   </soapenv:Body>
+</soapenv:Envelope>
+]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://homework5service/ETicketServiceImplPortType/generateETicket"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="ef1fb86f-0870-42d1-a85a-ee10dbcdc435" isOneWay="false" action="" name="checkETicketValidity" bindingOperationName="checkETicketValidity" type="Request-Response" outputName="checkETicketValidityResponse" inputName="checkETicketValidity" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="71472188-b22f-40e5-a866-6cbea541998d" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/homework5/services/ETicketServiceImplPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hom="http://homework5service/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <hom:checkETicketValidity>\r
+         <hom:eTicketId>?</hom:eTicketId>\r
+      </hom:checkETicketValidity>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://homework5service/ETicketServiceImplPortType/checkETicketValidity"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

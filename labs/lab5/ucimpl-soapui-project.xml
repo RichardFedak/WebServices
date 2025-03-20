@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="5843ca9a-a05c-421e-9469-9c622683cbe6" activeEnvironment="Default" name="ucimpl" resourceRoot="" soapui-version="5.8.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="a883748d-ce97-49d6-9bd8-d8ee5755e79d" wsaVersion="NONE" name="UCImplServiceSoapBinding" type="wsdl" bindingName="{http://test/}UCImplServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/TestWebService/wsdl/ucimpl.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/TestWebService/wsdl/ucimpl.wsdl"><con:part><con:url>http://localhost:8080/TestWebService/wsdl/ucimpl.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="UCImplService" targetNamespace="http://test/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://test/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://test/" schemaLocation="ucimpl_schema1.xsd"/>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="c2f">
+    <wsdl:part name="parameters" element="tns:c2f"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="c2fResponse">
+    <wsdl:part name="parameters" element="tns:c2fResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="UC">
+    <wsdl:operation name="c2f">
+      <wsdl:input name="c2f" message="tns:c2f"></wsdl:input>
+      <wsdl:output name="c2fResponse" message="tns:c2fResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UCImplServiceSoapBinding" type="tns:UC">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="c2f">
+      <soap:operation soapAction="urn:C2f" style="document"/>
+      <wsdl:input name="c2f">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="c2fResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UCImplService">
+    <wsdl:port name="UCImplPort" binding="tns:UCImplServiceSoapBinding">
+      <soap:address location="http://localhost:8080/TestWebService/services/UCImplPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:8080/TestWebService/wsdl/ucimpl_schema1.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://test/" version="1.0" xmlns:tns="http://test/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="c2f" type="tns:c2f"/>
+  <xs:element name="c2fResponse" type="tns:c2fResponse"/>
+  <xs:complexType name="c2f">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="c2fResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/TestWebService/services/UCImplPort</con:endpoint></con:endpoints><con:operation id="ceb26976-2cba-49da-af73-9301bc49aa67" isOneWay="false" action="urn:C2f" name="c2f" bindingOperationName="c2f" type="Request-Response" outputName="c2fResponse" inputName="c2f" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ad3edeea-5071-4110-ba82-a2042055d0e1" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/TestWebService/services/UCImplPort</con:endpoint><con:request><![CDATA[<soapenv:Envelope
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+xmlns:nsw="http://test/">
+  <soapenv:Header>
+    <wsse:Security>
+      <wsse:UsernameToken>
+        <wsse:Username>Alicde</wsse:Username>
+        <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">ecilA</wsse:Password>
+      </wsse:UsernameToken>
+     </wsse:Security>
+  </soapenv:Header>
+  <soapenv:Body>
+    <nsw:c2f>
+      <arg0>20</arg0>
+    </nsw:c2f>
+  </soapenv:Body>
+</soapenv:Envelope>
+]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:C2f"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
