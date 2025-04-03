@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://hw/Process/wsdl" 
+   xmlns:tnsxsd="http://hw/Process/xsd" 
+   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+   xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" 
+   xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+   xmlns:service="http://hw2/"
+   targetNamespace="http://hw/Process/wsdl">
+    <wsdl:import location="VerificationService.wsdl"
+      namespace="http://hw2/"/>
+	<wsdl:import location="ETicketService.wsdl"
+	  namespace="http://hw2/"/>
+
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://hw/Process/xsd">
+			<xsd:element name="athleteId" type="xsd:integer"/>
+			<xsd:element name="ticketSent" type="xsd:boolean"/>
+		</xsd:schema>
+	</wsdl:types>
+	
+	<wsdl:message name="ProcessInputMessage">
+		<wsdl:part name="parameters" element="tnsxsd:athleteId"/>
+	</wsdl:message>
+	<wsdl:message name="ProcessOutputMessage">
+		<wsdl:part name="parameters" element="tnsxsd:ticketSent"/>
+	</wsdl:message>
+	
+	<wsdl:portType name="ProcessPortType">
+		<wsdl:operation name="processAthleteId">
+			<wsdl:input name="AthleteId" message="tns:ProcessInputMessage"/>
+			<wsdl:output name="TicketSent" message="tns:ProcessOutputMessage"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:portType name="VerificationResponsePortType">
+		<wsdl:operation name="verifyOperation">
+			<wsdl:input name="AthleteId" message="service:verifyResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:portType name="ETicketResponsePortType">
+		<wsdl:operation name="eticketGenerateOperation">
+			<wsdl:input name="AthleteId" message="service:generateETicketResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="eticketValidityOperation">
+			<wsdl:input name="ETicketId" message="service:checkETicketValidityResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="ProcessSOAPBinding" type="tns:ProcessPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="processAthleteId">
+			<soap:operation soapAction="urn:processAthleteId" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	
+	<wsdl:binding name="VerificationSOAPBinding" type="tns:VerificationResponsePortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="verifyOperation">
+			<soap:operation soapAction="urn:verifyOperation" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:binding name="ETicketSOAPBinding" type="tns:ETicketResponsePortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="eticketGenerateOperation">
+			<soap:operation soapAction="urn:eticketGenerateOperation" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+		</wsdl:operation>
+		<wsdl:operation name="eticketValidityOperation">
+			<soap:operation soapAction="urn:eticketValidityOperation" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="ProcessService">
+		<wsdl:port name="ProcessPort" binding="tns:ProcessSOAPBinding">
+			<soap:address location="http://localhost:8080/ode/processes/Process"/>
+		</wsdl:port>
+		<wsdl:port name="VerificationPort" binding="tns:VerificationSOAPBinding">
+			<soap:address location="http://localhost:8080/ode/processes/ProcessVerify"/>
+		</wsdl:port>
+		<wsdl:port name="ETicketPort" binding="tns:ETicketSOAPBinding">
+			<soap:address location="http://localhost:8080/ode/processes/ProcessETicket"/>
+		</wsdl:port>
+	</wsdl:service>
+
+	<plnk:partnerLinkType name="ProcessLinkType">
+		<plnk:role name="CustomProcessExecutorRole" portType="tns:ProcessPortType"/>
+	</plnk:partnerLinkType>
+	
+	<plnk:partnerLinkType name="VerifyLinkType">
+	  <plnk:role name="VerifierRole" portType="service:VerificationService" />
+	  <plnk:role name="VerifierClientRole" portType="tns:VerificationResponsePortType" />
+	</plnk:partnerLinkType>
+
+	<plnk:partnerLinkType name="ETicketLinkType">
+	  <plnk:role name="ETicketRole" portType="service:ETicketService" />
+	  <plnk:role name="ETicketClientRole" portType="tns:ETicketResponsePortType" />
+	</plnk:partnerLinkType>
+
+</wsdl:definitions>

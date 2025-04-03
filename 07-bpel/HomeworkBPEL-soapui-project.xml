@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="a66fe47a-207a-49ac-9801-1f3b6af4a64d" activeEnvironment="Default" name="HomeworkBPEL" resourceRoot="" soapui-version="5.8.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="9def519d-53a4-422a-96cd-ac5cacef1032" wsaVersion="NONE" name="ProcessSOAPBinding" type="wsdl" bindingName="{http://hw/Process/wsdl}ProcessSOAPBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/ode/processes/Process?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/ode/processes/Process?wsdl"><con:part><con:url>http://localhost:8080/ode/processes/Process?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://hw/Process/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:service="http://hw2/" xmlns:tnsxsd="http://hw/Process/xsd" xmlns:tns="http://hw/Process/wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl">
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://hw/Process/xsd">
+      <xsd:element name="athleteId" type="xsd:integer"/>
+      <xsd:element name="ticketSent" type="xsd:boolean"/>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://hw2/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:tns="http://hw2/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata">
+      <xsd:element name="getAllVerifiedAthletes" type="service:getAllVerifiedAthletes"/>
+      <xsd:element name="getAllVerifiedAthletesResponse" type="service:getAllVerifiedAthletesResponse"/>
+      <xsd:element name="verify" type="service:verify"/>
+      <xsd:element name="verifyResponse" type="service:verifyResponse"/>
+      <xsd:complexType name="getAllVerifiedAthletes">
+        <xsd:sequence/>
+      </xsd:complexType>
+      <xsd:complexType name="getAllVerifiedAthletesResponse">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="return" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="verify">
+        <xsd:sequence>
+          <xsd:element name="arg0" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="verifyResponse">
+        <xsd:sequence>
+          <xsd:element name="return" type="xsd:boolean"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://hw2/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:tns="http://hw2/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata">
+      <xsd:element name="checkETicketValidity" type="service:checkETicketValidity"/>
+      <xsd:element name="checkETicketValidityResponse" type="service:checkETicketValidityResponse"/>
+      <xsd:element name="eTicket" type="service:eTicket"/>
+      <xsd:element name="generateETicket" type="service:generateETicket"/>
+      <xsd:element name="generateETicketResponse" type="service:generateETicketResponse"/>
+      <xsd:complexType name="generateETicket">
+        <xsd:sequence>
+          <xsd:element name="arg0" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="generateETicketResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="return" type="service:eTicket"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="eTicket">
+        <xsd:sequence>
+          <xsd:element name="id" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="date" type="xsd:dateTime"/>
+          <xsd:element name="athleteId" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="checkETicketValidity">
+        <xsd:sequence>
+          <xsd:element name="arg0" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="checkETicketValidityResponse">
+        <xsd:sequence>
+          <xsd:element name="return" type="xsd:boolean"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ProcessInputMessage">
+    <wsdl:part name="parameters" element="tnsxsd:athleteId"/>
+  </wsdl:message>
+  <wsdl:message name="ProcessOutputMessage">
+    <wsdl:part name="parameters" element="tnsxsd:ticketSent"/>
+  </wsdl:message>
+  <wsdl:portType name="ProcessPortType">
+    <wsdl:operation name="processAthleteId">
+      <wsdl:input message="tns:ProcessInputMessage" wsaw:Action="urn:processAthleteId"/>
+      <wsdl:output message="tns:ProcessOutputMessage" wsaw:Action="http://hw/Process/wsdl/ProcessPortType/TicketSent"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ProcessSOAPBinding" type="tns:ProcessPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="processAthleteId">
+      <soap:operation soapAction="urn:processAthleteId" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Process">
+    <wsdl:port name="ProcessPort" binding="tns:ProcessSOAPBinding">
+      <soap:address location="http://localhost:8080/ode/processes/Process.ProcessPort/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ode/processes/Process.ProcessPort/</con:endpoint></con:endpoints><con:operation id="b69d02ba-511b-4e46-8fa0-f99ab69cbb12" isOneWay="false" action="urn:processAthleteId" name="processAthleteId" bindingOperationName="processAthleteId" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="631fe156-7af3-4d90-b139-772c7804ca14" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ode/processes/Process.ProcessPort/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://hw/Process/xsd">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <xsd:athleteId>2</xsd:athleteId>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:processAthleteId"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
