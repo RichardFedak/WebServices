@@ -36,16 +36,19 @@
 
 	<wsdl:portType name="VerificationResponsePortType">
 		<wsdl:operation name="verifyOperation">
-			<wsdl:input name="AthleteId" message="service:verifyResponse"/>
+			<wsdl:input name="AthleteId" message="service:verify"/>
+			<wsdl:output name="Verified" message="service:verifyResponse"/>
 		</wsdl:operation>
 	</wsdl:portType>
 
 	<wsdl:portType name="ETicketResponsePortType">
 		<wsdl:operation name="eticketGenerateOperation">
-			<wsdl:input name="AthleteId" message="service:generateETicketResponse"/>
+			<wsdl:input name="AthleteId" message="service:generateETicket"/>
+			<wsdl:output name="ETicket" message="service:generateETicketResponse"/>
 		</wsdl:operation>
 		<wsdl:operation name="eticketValidityOperation">
-			<wsdl:input name="ETicketId" message="service:checkETicketValidityResponse"/>
+			<wsdl:input name="ETicketId" message="service:checkETicketValidity"/>
+			<wsdl:output name="Valid" message="service:checkETicketValidityResponse"/>
 		</wsdl:operation>
 	</wsdl:portType>
 
@@ -69,6 +72,9 @@
 			<wsdl:input>
 				<soap:body use="literal"/>
 			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
 		</wsdl:operation>
 	</wsdl:binding>
 
@@ -79,12 +85,18 @@
 			<wsdl:input>
 				<soap:body use="literal"/>
 			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
 		</wsdl:operation>
 		<wsdl:operation name="eticketValidityOperation">
 			<soap:operation soapAction="urn:eticketValidityOperation" style="document"/>
 			<wsdl:input>
 				<soap:body use="literal"/>
 			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
 		</wsdl:operation>
 	</wsdl:binding>
 
