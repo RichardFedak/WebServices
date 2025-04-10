@@ -1,0 +1,154 @@
+openapi: 3.0.4
+info:
+  title: Registration service API
+  description: Basic HTTP API
+  termsOfService: https://swagger.io/terms/
+  contact:
+    email: richardfedak@gmail.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/HWRest/rest
+  
+paths:
+  /athletes:
+    get:
+      summary: Get all registered athletes
+      responses:
+        '200':
+          description: List of athletes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AthleteJson'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AthleteXml'
+                xml:
+                  name: athletes
+                  wrapped: true
+    post:
+      summary: Register a new athlete
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/AthleteXml'
+      responses:
+        '201':
+          description: Athlete created
+        '409':
+          description: Athlete already exists
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Athlete with ID 3 already exists
+
+  /athletes/{athleteId}:
+    get:
+      summary: Get a specific athlete by ID
+      parameters:
+        - in: path
+          name: athleteId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Athlete found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AthleteJson'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AthleteXml'
+        '404':
+          description: Athlete not found
+    put:
+      summary: Update an existing athlete
+      parameters:
+        - in: path
+          name: athleteId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/AthleteXml'
+      responses:
+        204:
+          description: Athlete updated
+        409:
+          description: ID mismatch
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: IDs do not match
+    delete:
+      summary: Delete an athlete
+      parameters:
+        - in: path
+          name: athleteId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Athlete deleted
+        '404':
+          description: Athlete not found
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Athlete with ID 3 was not found.
+
+components:
+  schemas:
+    AthleteJson:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Athlete Strong
+        email:
+          type: string
+          example: test@test.com
+        height:
+          example: 187
+          type: integer
+    AthleteXml:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Athlete Strong
+        email:
+          type: string
+          example: test@test.com
+        height:
+          example: 187
+          type: integer
+      xml:
+        name: Athlete
+
+
