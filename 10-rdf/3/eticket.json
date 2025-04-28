@@ -1,0 +1,25 @@
+{
+    "@context": {
+        "ex": "http://example.org/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "id": {
+            "@id": "ex:id",
+            "@type": "xsd:integer"
+        },
+        "date": {
+            "@id": "ex:date",
+            "@type": "xsd:date"
+        },
+        "athleteId": {
+            "@id": "ex:athleteId",
+            "@type": "xsd:integer"
+        },
+        "type": "@type"
+    },
+    "@id": "http://example.org/ticket",
+    "type": "ex:ETicket",
+    "id": 594,
+    "date": "2025-04-28T11:29:36.270+02:00",
+    "athleteId": 22
+}
+  

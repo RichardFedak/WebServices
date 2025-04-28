@@ -1,0 +1,11 @@
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+   <S:Body>
+      <ns2:generateETicketResponse xmlns:ns2="http://hw2/">
+         <return>
+            <id>594</id>
+            <date>2025-04-28T11:29:36.270+02:00</date>
+            <athleteId>22</athleteId>
+         </return>
+      </ns2:generateETicketResponse>
+   </S:Body>
+</S:Envelope>

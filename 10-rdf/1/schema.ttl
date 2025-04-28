@@ -1,0 +1,19 @@
+@prefix ex: <https://example.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sport: <https://www.bbc.co.uk/ontologies/sport-ontology/> .
+@prefix schema: <http://schema.org/> .
+
+ex:accessPass a rdf:Property ;
+    rdfs:label "Provides access to the competition"@en ;
+    rdfs:domain schema:Ticket ;
+    rdfs:range sport:Competition .
+
+ex:verified rdf:type rdf:Property ;
+    rdfs:label "Flag to indicate if the athlete is verified"@en ;
+    rdfs:range xsd:boolean .
+
+ex:category rdf:type rdf:Property ;
+    rdfs:label "Categoty of a sport discipline"@en ;
+    rdfs:range xsd:string .

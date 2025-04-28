@@ -1,0 +1,8 @@
+@prefix ex: <http://example.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+    
+ex:ticket a ex:ETicket ;
+  ex:id "594"^^xsd:integer ;
+  ex:date "2025-04-28T11:29:36.270+02:00"^^xsd:date ;
+  ex:athleteId "22"^^xsd:integer .
